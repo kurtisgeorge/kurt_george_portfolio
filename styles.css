@@ -537,15 +537,92 @@ article ul li {
   background: var(--color-primary);
 }
 
+/* ===== Modal base ===== */
+/* Modal container fades and disables interaction when hidden */
+#modal {
+  position: fixed;
+  inset: 0;
+  display: flex;                 /* keep in DOM; control via opacity */
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 999;
+}
+#modal.open {
+  opacity: 1;
+  pointer-events: auto;
+}
 
+/* Backdrop also fades */
+#modal .modal-backdrop {
+  position: absolute; inset: 0;
+  background: rgba(0,0,0,.45);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+#modal.open .modal-backdrop { opacity: 1; }
+
+/* Dialog pops in/out with translate+scale */
+#modal .modal-dialog {
+  position: relative;            /* centered by flex parent */
+  width: min(920px, 92vw);
+  max-height: min(90vh, 1000px);
+  background: var(--color-secondary);
+  color: var(--color-secondary-foreground);
+  border-radius: var(--radius);
+  box-shadow: 0 20px 60px rgba(0,0,0,.35);
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  transform: translateY(20px) scale(0.97);
+  opacity: 0;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+#modal.open .modal-dialog {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+
+#modal .modal-close {
+  position: absolute; top: 10px; right: 10px;
+  width: 36px; height: 36px; border-radius: 50%;
+  background: var(--color-muted); color: var(--color-foreground);
+}
+
+/* ===== Modal content styling ===== */
+.modal-content { overflow: auto; }
+
+.modal-article { display: grid; gap: var(--space-4); padding: var(--space-4); }
+.modal-article .video {
+  aspect-ratio: 16 / 9;
+  border-radius: calc(var(--radius) - 2px);
+  overflow: hidden;
+  background: #000;
+}
+.modal-article iframe { width: 100%; height: 100%; display: block; }
+
+.modal-header h3 { font-size: 1.25rem; font-weight: var(--fw-bold); margin: 0; }
+.modal-header .dates { color: var(--color-muted-foreground); font-size: var(--fs-sm); }
+
+.modal-body p { color: var(--color-foreground); line-height: 1.7; }
+.modal-body .project-skills { margin-top: var(--space-2); }
+.modal-body .project-links { margin-top: var(--space-4); display: flex; gap: var(--space-2); }
+.modal-body .project-links a {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--color-primary);
+  color: var(--color-primary-foreground);
+  padding: 6px 12px; border-radius: var(--radius);
+  line-height: 1; white-space: nowrap;
+}
+.modal-body .project-links svg { display: block; }
 
 
 /* =========================================
    STAGGERED ANIMATIONS
 ========================================= */
-
-
-
 
 @media (prefers-reduced-motion: no-preference) {
   /* children that will animate */
