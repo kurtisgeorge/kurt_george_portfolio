@@ -1,0 +1,573 @@
+/* =========================================
+   RESET / NORMALIZE
+========================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--color-background);
+  color: var(--color-foreground);
+}
+
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+p,
+h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+ul, ol { list-style: none; }
+
+a { color: inherit; text-decoration: none; }
+button { border: 0; background: none; cursor: pointer; }
+
+/* =========================================
+   DESIGN TOKENS (DEDUPED, RGB)
+========================================= */
+
+:root {
+  /* Core palette */
+  --color-background: rgb(239, 236, 229);       /* Cream */
+  --color-foreground: rgb(0, 0, 0);             /* Black */
+
+  --color-primary: rgb(126, 161, 114);          /* Asparagus */
+  --color-primary-foreground: rgb(255, 255, 255);
+
+  --color-secondary: rgb(255, 255, 255);        /* White */
+  --color-secondary-foreground: rgb(0, 0, 0);
+
+  --color-muted: rgb(232, 228, 219);            /* Subtle cream */
+  --color-muted-foreground: rgb(102, 102, 102);
+
+  --color-destructive: rgb(255, 59, 48);
+  --color-destructive-foreground: rgb(255, 255, 255);
+
+  --color-border: rgb(225, 220, 207);
+  --color-input: var(--color-border);           /* same as border */
+  --color-ring: var(--color-primary);
+
+  --radius: 0.5rem;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Inter, sans-serif;
+  --fs-xsm: 0.7rem;
+  --fs-sm: 0.875rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.3rem;
+  --fs-xl: 1.5rem;
+  --fs-2xl: 2.25rem;
+  --fs-3xl: 3rem;
+  --fw-normal: 400;
+  --fw-medium: 500;
+  --fw-bold: 700;
+
+  /* Spacing */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+}
+
+.dark {
+  --color-background: rgb(0, 0, 0);
+  --color-foreground: rgb(239, 236, 229);
+
+  --color-primary: rgb(126, 161, 114);
+  --color-primary-foreground: rgb(255, 255, 255);
+
+  --color-secondary: rgb(23, 23, 23);
+  --color-secondary-foreground: rgb(239, 236, 229);
+
+  --color-muted: rgb(38, 38, 38);
+  --color-muted-foreground: rgb(193, 185, 170);
+
+  --color-destructive: rgb(110, 28, 28);
+  --color-destructive-foreground: rgb(255, 255, 255);
+
+  --color-border: rgb(38, 38, 38);
+  --color-input: var(--color-border);
+  --color-ring: var(--color-primary);
+}
+/* =========================================
+   LAYOUT & COMPONENTS */
+
+header, main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+h1 {
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+}
+
+header {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: var(--space-8);
+  border-bottom: 1px solid var(--color-border)
+}
+
+.header-content {
+  flex: 1;
+  margin-right: var(--space-6);
+}
+
+.header-content p {
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-light);
+  margin-bottom: var(--space-6);
+}
+
+#headshot {
+  width: 115px;
+  height: 115px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--color-border);
+  flex: 0 0 auto;
+}
+
+/* give bottom breathing room so content isn't covered */
+main { padding-bottom: 110px; }
+
+/* floating pill dock */
+.dock {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%)!important;      /* center horizontally */
+  bottom: max(16px, env(safe-area-inset-bottom)); 
+  z-index: 50;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 12px;
+
+  border-radius: 9999px;
+  background: var(--color-background);
+  color: var(--color-foreground);
+  backdrop-filter: blur(8px) saturate(120%);
+  box-shadow:
+    0 1px 0 rgba(255,255,255,.6) inset,
+    0 12px 30px rgba(0,0,0,.12);
+}
+
+/* items */
+.dock a,
+.dock button {
+  border: 0;
+  background: transparent;
+  font-size: 20px;    /* icon size */
+  width: 44px;        /* square touch target */
+  height: 44px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+}
+
+.dock svg {
+  width: 30px;
+}
+
+
+.icon-sun { display: none; }          /* default: light mode shows moon */
+.dark .icon-sun { display: block; }   /* in dark mode show sun */
+.dark .icon-moon { display: none; }   /* and hide moon */
+
+/* hover/active */
+.dock a:hover,
+.dock button:hover {
+  background: rgba(0,0,0,.06);
+}
+.dock a:active,
+.dock button:active {
+  transform: translateY(1px);
+}
+
+#linked-in-icon {
+  fill: var(--color-foreground);
+}
+
+.about-me p {
+  color: var(--color-muted-foreground);
+}
+
+section {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--color-border)
+}
+
+h2 {
+  margin: 0.5rem 0;
+}
+
+h3 {
+  font-size: var(--fs-base);
+  font-weight: var(--fw-medium);
+}
+.experience-list li, .education-list li {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+.experience-details p, .educator-details p {
+  font-size: var(--fs-sm);
+}
+.duration {
+  margin-left: auto;
+  color: var(--color-muted-foreground);
+}
+
+.company-logo, .educator-logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;    /* allows wrapping to next line */
+  gap: 5px;          /* consistent spacing between chips */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.chip-list li {
+  background: var(--color-primary);   /* your green */
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  font-size: var(--fs-xsm);
+  font-weight: 700;
+  white-space: nowrap;   /* keeps chip text in one line */
+}
+
+.projects-header {
+  text-align: center;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+.projects-header > p:first-child {
+  background: var(--color-foreground);   /* your green */
+  color: var(--color-background);
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  display: inline-block;
+}
+
+.projects-header h2 {
+  margin-top: var(--space-2);
+  font-size: var(--fs-3xl);
+}
+
+.projects-header p:nth-of-type(2) {
+  line-height: 2rem;
+  color: var(--color-muted-foreground);
+  font-size: var(--fs-lg);
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--space-6);
+  align-items: stretch;
+}
+
+@media (max-width: 720px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-grid button {
+  position: relative;
+  display: block;           /* ensure width/height apply */
+  width: 100%;              /* make the card span its container */
+  aspect-ratio: 16 / 9;    /* maintain a 16:9 aspect ratio */
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+   /* placeholder to allow future overlay */
+}
+
+button span {
+  position: absolute;
+  top: 50%;   
+  left: 50%;  
+  transform: translate(-50%, -50%);
+  background: var(--color-background);
+  color: var(--color-foreground);
+  padding: 4px 20px;
+  border-radius: 15px;
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  opacity: 0.7;
+}
+
+.project-grid button:hover span {
+  opacity: 0.9;
+}
+
+.project-thumbnail {
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.project-thumbnail img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  transition: transform .25s ease;
+}
+
+.project-grid button:hover .project-thumbnail img {
+  transform: scale(1.03);
+}
+
+article {
+  position: relative;
+  border: 1px solid var(--color-border);
+  padding: var(--space-4);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  background: var(--color-secondary);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: box-shadow .2s ease, transform .2s ease;
+}
+
+article:hover {
+  box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+  transform: translateY(-2px);
+}
+
+article ul {
+  display: flex;
+  flex-wrap: wrap;    /* allows wrapping to next line */
+  gap: 5px;          /* consistent spacing between chips */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+article ul li {
+   background: var(--color-foreground);   /* your green */
+  color: var(--color-background);
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  font-size: var(--fs-xsm);
+  font-weight: 500;
+  white-space: nowrap;   /* keeps chip text in one line */
+}
+
+.project-links {
+  margin-top: auto;   /* push this row to the bottom of the card */
+}
+
+.project-links a {
+  background: var(--color-primary);   
+  color: white;
+  padding: 4px 12px;
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  line-height: 1;
+  font-size: var(--fs-sm);
+  white-space: nowrap; 
+}
+
+.project-links a svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.project-links a:hover {
+  filter: brightness(.96);
+}
+
+.project-details, .project-links, .project-skills {
+  padding: var(--space-2);
+}
+
+.project-details h3 {
+  margin: 0 0 .25rem 0;
+  font-size: 1.125rem;
+  font-weight: var(--fw-bold);
+}
+
+.project-details p:first-of-type {
+  color: var(--color-muted-foreground);
+  font-size: var(--fs-sm);
+  margin-bottom: .25rem;
+}
+
+.project-details p:last-of-type {
+  color: var(--color-foreground);
+}
+
+.contact {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.contact .eyebrow {
+  display: inline-block;
+  background: var(--color-foreground);   /* your green */
+  color: var(--color-background);
+  padding: 0.25rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.contact .title {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.contact p {
+  color: var(--color-muted-foreground);
+  font-size: 1.125rem;
+  line-height: 1.6;
+  max-width: 40ch;
+  margin: 0 auto 2rem;
+}
+
+.contact p a {
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.contact p a:hover {
+  text-decoration: underline;
+}
+
+/* --- Form styles --- */
+.contact-form {
+  max-width: 480px;
+  margin: 0 auto;
+  display: grid;
+  gap: 1rem;
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #fff;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
+.contact-form button {
+  background: var(--color-foreground);   /* your green */
+  color: var(--color-background);
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.contact-form button:hover {
+  background: var(--color-primary);
+}
+
+
+
+
+/* =========================================
+   STAGGERED ANIMATIONS
+========================================= */
+
+
+
+
+@media (prefers-reduced-motion: no-preference) {
+  /* children that will animate */
+  .stagger > .reveal {
+    opacity: 0;
+    transform: translateY(12px) scale(.98);
+    filter: blur(2px);
+  }
+
+  /* when the group is "in", animate its children */
+  .stagger.in > .reveal {
+    opacity: 1;
+    transform: none;
+    filter: none;
+    transition:
+      opacity 1s ease,
+      transform 1s cubic-bezier(.22,1,.36,1),
+      filter 1s ease;
+    /* stagger per child */
+    transition-delay: calc(
+      var(--stagger-base, 0ms) +
+      var(--i, 0) * var(--stagger-step, 70ms)
+    );
+  }
+}

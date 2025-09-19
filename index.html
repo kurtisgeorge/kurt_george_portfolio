@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kurt George - Web Developer</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap">
+</head>
+<body>
+  <header id="top">
+    <nav class="dock">
+
+      <a href="#top" aria-label="Home">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house-icon lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"/><path d="M3 10a2 2 0 0 1 .709-1.528l7-6a2 2 0 0 1 2.582 0l7 6A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+        </svg>
+      </a>
+
+      <a href="https://github.com/kurtisgeorge" target="_blank" aria-label="GitHub">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-github-icon lucide-github"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/kurt-george/" target="_blank" aria-label="LinkedIn">
+        <svg id="linked-in-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640"><path d="M196.3 512L103.4 512L103.4 212.9L196.3 212.9L196.3 512zM149.8 172.1C120.1 172.1 96 147.5 96 117.8C96 103.5 101.7 89.9 111.8 79.8C121.9 69.7 135.6 64 149.8 64C164 64 177.7 69.7 187.8 79.8C197.9 89.9 203.6 103.6 203.6 117.8C203.6 147.5 179.5 172.1 149.8 172.1zM543.9 512L451.2 512L451.2 366.4C451.2 331.7 450.5 287.2 402.9 287.2C354.6 287.2 347.2 324.9 347.2 363.9L347.2 512L254.4 512L254.4 212.9L343.5 212.9L343.5 253.7L344.8 253.7C357.2 230.2 387.5 205.4 432.7 205.4C526.7 205.4 544 267.3 544 347.7L544 512L543.9 512z"/></svg>
+      </a>
+      <a href="#contact" aria-label="Mail"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail-icon lucide-mail"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+      </a>
+      <button type="button" id="theme-toggle" class="dock-theme">
+  <!-- light mode icon (shows in light) -->
+        <svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/>
+        </svg>
+
+        <!-- dark mode icon (shows in dark) -->
+        <svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+            viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2"/><path d="M12 20v2"/>
+          <path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/>
+          <path d="M2 12h2"/><path d="M20 12h2"/>
+          <path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
+        </svg>
+      </button>
+    </nav>
+    <div class="header-content">
+      <h1 id="intro-title">Hi, I’m Kurt 👋</h1>
+      <p>Web design & development student and front-end developer/designer creating modern, user-focused experiences.</p>
+    </div>
+    <figure>
+      <img src="assets/images/headshot.png" alt="Kurt — portrait" id="headshot" />
+    </figure>
+  </header>
+
+  <main>
+    <section class="about-me">
+      <h2>About</h2>
+      <p>SAIT Web Design & Development student based in Calgary. I design and build fast, accessible front-ends using modern technologies, pairing clean code with a strong visual eye. Photography and graphic design shape how I compose interfaces-details, hierarchy, and light matter to me. I'm also fluent in English, Spanish, and Portuguese, a skill that broadens how I connect and create. Originally from Newfoundland but having lived in many places, I care about clear, friendly experiences that work for different people and contexts. I'm excited to keep growing, and I'm open to internships, junior roles, and freelance projects where I can contribute and learn.</p>
+    </section>
+
+    <!-- WORK EXPERIENCE -->
+    <section class="work-experience">
+      <h2>Work Experience</h2>
+      <ul class="experience-list">
+        <li>
+          <figure class="company-logo">
+            <img src="assets/images/atomic.png" alt="" id="atomic-logo">
+          </figure>
+          <div class="experience-details">
+            <h3 class="company-name">Atomic Finance</h3>
+            <p class="role">Bitcoin Protocol Engineer</p>
+          </div>
+          <p class="duration">May 2021 - October 2022</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- EDUCATION -->
+   <section class="education">
+      <h2>Education</h2>
+      <ul class="education-list">
+        <li>
+          <figure class="educator-logo">
+            <img src="assets/images/sait_logo.png" alt="" id="">
+          </figure>
+          <div class="educator-details">
+            <h3 class="educator-name">Southern Alberta Institute of Technology</h3>
+            <p class="certification">Interactive Design - Web Design & Development</p>
+          </div>
+          <p class="duration">September 2024 - April 2026</p>
+        </li>
+      </ul>
+    </section>
+
+    <!-- SKILLS (chips) -->
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <ul class="chip-list">
+        <li>React</li>
+        <li>Next.js</li>
+        <li>TypeScript</li>
+        <li>JavaScript</li>
+        <li>Python</li>
+        <li>Git</li>
+        <li>SQL</li>
+        <li>Shopify Liquid</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>Tailwind CSS</li>
+        <li>Accessibility (a11y)</li>
+        <li>Framer Motion</li>
+        <li>Figma</li>
+        <li>Adobe Photoshop</li>
+        <li>Adobe Lightroom</li>
+        <li>Adobe Premiere</li>
+        <li>Graphic Design</li>
+        <li>Photography</li>
+      </ul>
+    </section>
+
+    <!-- PROJECTS -->
+    <section class="projects">
+      <div class="projects-header">
+        <p>My Projects</p>
+        <h2>Check out my latest work</h2>
+        <p>I've worked on a variety of projects, from simple websites to complex web applications. Here are a few of my favorites.</p>
+      </div>  
+      <div class="project-grid">
+
+        <!-- card 1 -->
+
+        <article>
+            <button type="button">
+              <figure class="project-thumbnail">
+                <img src="assets/images/Screenshot 2025-09-18 at 12.59.42 PM.png">
+                <span aria-hidden="true">▶︎</span>
+              </figure>
+            </button>
+
+            <div class="project-details">
+              <h3>Jupiter- Mother of Storms</h3>
+              <p>Jan 2024 - Feb 2025</p>
+              <p>With the release of the <a href="#">OpenAI GPT Store</a>, I built a SaaS
+              that collects emails from GPT users to help monetize API usage.</p>
+            </div>
+            
+            <ul class="project-skills">
+              <li>Next.js</li>
+              <li>Typescript</li>
+              <li>PostgreSQL</li>
+              <li>Prisma</li>
+              <li>TailwindCSS</li>
+              <li>Stripe</li>
+              <li>Shadcn UI</li>
+              <li>Magic UI</li>
+            </ul>
+            <div class="project-links">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
+            </div>
+
+            <template>
+            </template>
+          </article>
+
+          <!-- card 2 -->
+
+
+          <article>
+            <button type="button">
+              <figure class="project-thumbnail">
+                <img src="assets/images/hardthreads-desktop.png">
+                <span aria-hidden="true">▶︎</span>
+              </figure>
+            </button>
+
+            <div class="project-details">
+              <h3>Photography Portfolio</h3>
+              <p>September 2025</p>
+              <p>A clean, minimal gallery to showcase my street and creative photography, with a responsive grid and lightbox for fullscreen viewing.</p>
+            </div>
+            
+            <ul class="project-skills">
+              <li>HTML</li>
+              <li>CSS</li>
+              <li>JavaScript</li>
+              <li>Adobe Lightroom</li>
+              <li>Adobe Photoshop</li>
+              <li>Framer</li>
+      
+            </ul>
+            <div class="project-links">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
+            </div>
+
+            <template>
+            </template>
+          </article>
+
+
+          <!-- Card 3 -->
+
+        <article>
+            <button type="button">
+              <figure class="project-thumbnail">
+                <img src="assets/images/Screenshot 2025-09-18 at 12.59.42 PM.png">
+                <span aria-hidden="true">▶︎</span>
+              </figure>
+            </button>
+
+            <div class="project-details">
+              <h3>Chat Collect</h3>
+              <p>Jan 2024 - Feb 2025</p>
+              <p>With the release of the <a href="#">OpenAI GPT Store</a>, I built a SaaS
+              that collects emails from GPT users to help monetize API usage.</p>
+            </div>
+            
+            <ul class="project-skills">
+              <li>Next.js</li>
+              <li>Typescript</li>
+              <li>PostgreSQL</li>
+              <li>Prisma</li>
+              <li>TailwindCSS</li>
+              <li>Stripe</li>
+              <li>Shadcn UI</li>
+              <li>Magic UI</li>
+            </ul>
+            <div class="project-links">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
+              </div>
+
+            <!-- optional: the modal content for this card -->
+            <template>
+              <!-- title/dates/video/long description/etc. -->
+            </template>
+          </article>
+
+          <!-- Card 4 -->
+
+          <article>
+            <button type="button">
+              <figure class="project-thumbnail">
+                <img src="assets/images/hardthreads-desktop.png">
+                <span aria-hidden="true">▶︎</span>
+              </figure>
+            </button>
+
+            <div class="project-details">
+              <h3>Chat Collect</h3>
+              <p>Jan 2024 - Feb 2025</p>
+              <p>With the release of the <a href="#">OpenAI GPT Store</a>, I built a SaaS
+              that collects emails from GPT users to help monetize API usage.</p>
+            </div>
+            
+            <ul class="project-skills">
+              <li>Next.js</li>
+              <li>Typescript</li>
+              <li>PostgreSQL</li>
+              <li>Prisma</li>
+              <li>TailwindCSS</li>
+              <li>Stripe</li>
+              <li>Shadcn UI</li>
+              <li>Magic UI</li>
+            </ul>
+            <div class="project-links">
+              <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-globe-icon lucide-globe"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg></a>
+              </div>
+
+            <!-- optional: the modal content for this card -->
+            <template>
+              <!-- title/dates/video/long description/etc. -->
+            </template>
+          </article>
+      </div>
+
+    </section>
+
+    <!-- HACKATHONS
+    <section id="hackathons">
+      <p class="eyebrow">Hackathons</p>
+      <h2 id="hack-title">I like building things</h2>
+      <p class="lede">During my time in university…</p>
+
+      <ul class="timeline">
+        <li>
+          <article>
+            <header>
+              <h3>Hack Western 5</h3>
+              <p>London, Ontario</p>
+              <time datetime="2018-11-23">Nov 23–25, 2018</time>
+            </header>
+            <p>Developed a mobile application…</p>
+          </article>
+        </li>
+      </ul>
+    </section> -->
+
+    <!-- CONTACT -->
+   <section class="contact" id="contact">
+    <p class="eyebrow">Contact</p>
+    <h2 class="title">Get in Touch</h2>
+    <p>Want to chat? Just shoot me a dm 
+      <a href="https://www.linkedin.com/in/kurt-george/" target="_blank">with a direct question on LinkedIn</a> 
+      or send me a quick message below.</p>
+
+    <form class="contact-form" method="post" action="https://formspree.io/f/xgvlgona">
+      <input type="text" name="name" placeholder="Your name" required>
+      <input type="email" name="email" placeholder="Your email" required>
+      <textarea name="message" rows="5" placeholder="Your message" required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+</section>
+
+  </main>
+
+  <footer>
+    <nav class="footer-nav">
+      <a href="#intro">Top</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <p><small>© <time datetime="2025">2025</time> Kurt</small></p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
