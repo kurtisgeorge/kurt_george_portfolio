@@ -1,3 +1,21 @@
+/* ======================================================
+   Kurt Portfolio — styles.css
+   House rules: formatting-only edits, no functional changes.
+   Table of Contents
+   01) Reset / Normalize
+   02) Design Tokens (CSS Variables)
+   03) Layout & Components
+       - Header/Main
+       - Dock
+       - Typographic helpers
+       - Experience / Education
+       - Chips
+       - Projects (header, grid, cards, links)
+       - Contact
+   04) Modal
+   05) Staggered Animations
+====================================================== */
+
 /* =========================================
    RESET / NORMALIZE
 ========================================= */
@@ -11,6 +29,7 @@
 }
 
 html { -webkit-text-size-adjust: 100%; }
+
 body {
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
@@ -49,7 +68,9 @@ select {
 ul, ol { list-style: none; }
 
 a { color: inherit; text-decoration: none; }
+
 button { border: 0; background: none; cursor: pointer; }
+
 
 /* =========================================
    DESIGN TOKENS (DEDUPED, RGB)
@@ -122,14 +143,18 @@ button { border: 0; background: none; cursor: pointer; }
   --color-input: var(--color-border);
   --color-ring: var(--color-primary);
 }
+
+
 /* =========================================
-   LAYOUT & COMPONENTS */
+   LAYOUT & COMPONENTS
+========================================= */
 
 header, main {
   max-width: 800px;
   margin: 0 auto;
   padding: 1rem 2rem;
 }
+
 h1 {
   font-size: var(--fs-2xl);
   font-weight: var(--fw-bold);
@@ -141,7 +166,7 @@ header {
   align-items: center;
   justify-content: space-between;
   padding-top: var(--space-8);
-  border-bottom: 1px solid var(--color-border)
+  border-bottom: 1px solid var(--color-border);
 }
 
 .header-content {
@@ -171,7 +196,7 @@ main { padding-bottom: 110px; }
 .dock {
   position: fixed;
   left: 50%;
-  transform: translateX(-50%)!important;      /* center horizontally */
+  transform: translateX(-50%) !important;      /* center horizontally */
   bottom: max(16px, env(safe-area-inset-bottom)); 
   z-index: 50;
 
@@ -217,6 +242,7 @@ main { padding-bottom: 110px; }
 .dock button:hover {
   background: rgba(0,0,0,.06);
 }
+
 .dock a:active,
 .dock button:active {
   transform: translateY(1px);
@@ -232,7 +258,7 @@ main { padding-bottom: 110px; }
 
 section {
   padding-bottom: 3rem;
-  border-bottom: 1px solid var(--color-border)
+  border-bottom: 1px solid var(--color-border);
 }
 
 h2 {
@@ -243,14 +269,17 @@ h3 {
   font-size: var(--fs-base);
   font-weight: var(--fw-medium);
 }
+
 .experience-list li, .education-list li {
   display: flex;
   gap: var(--space-4);
   margin-bottom: var(--space-4);
 }
+
 .experience-details p, .educator-details p {
   font-size: var(--fs-sm);
 }
+
 .duration {
   margin-left: auto;
   color: var(--color-muted-foreground);
@@ -537,6 +566,7 @@ article ul li {
   background: var(--color-primary);
 }
 
+
 /* ===== Modal base ===== */
 /* Modal container fades and disables interaction when hidden */
 #modal {
@@ -550,6 +580,7 @@ article ul li {
   transition: opacity 0.35s ease;
   z-index: 999;
 }
+
 #modal.open {
   opacity: 1;
   pointer-events: auto;
@@ -563,6 +594,7 @@ article ul li {
   opacity: 0;
   transition: opacity 0.35s ease;
 }
+
 #modal.open .modal-backdrop { opacity: 1; }
 
 /* Dialog pops in/out with translate+scale */
@@ -581,6 +613,7 @@ article ul li {
   opacity: 0;
   transition: transform 0.35s ease, opacity 0.35s ease;
 }
+
 #modal.open .modal-dialog {
   transform: translateY(0) scale(1);
   opacity: 1;
@@ -596,20 +629,26 @@ article ul li {
 .modal-content { overflow: auto; }
 
 .modal-article { display: grid; gap: var(--space-4); padding: var(--space-4); }
+
 .modal-article .video {
   aspect-ratio: 16 / 9;
   border-radius: calc(var(--radius) - 2px);
   overflow: hidden;
   background: #000;
 }
+
 .modal-article iframe { width: 100%; height: 100%; display: block; }
 
 .modal-header h3 { font-size: 1.25rem; font-weight: var(--fw-bold); margin: 0; }
+
 .modal-header .dates { color: var(--color-muted-foreground); font-size: var(--fs-sm); }
 
 .modal-body p { color: var(--color-foreground); line-height: 1.7; }
+
 .modal-body .project-skills { margin-top: var(--space-2); }
+
 .modal-body .project-links { margin-top: var(--space-4); display: flex; gap: var(--space-2); }
+
 .modal-body .project-links a {
   display: inline-flex; align-items: center; gap: 8px;
   background: var(--color-primary);
@@ -617,6 +656,7 @@ article ul li {
   padding: 6px 12px; border-radius: var(--radius);
   line-height: 1; white-space: nowrap;
 }
+
 .modal-body .project-links svg { display: block; }
 
 
