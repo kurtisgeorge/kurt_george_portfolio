@@ -270,6 +270,10 @@ h3 {
   font-weight: var(--fw-medium);
 }
 
+.work-experience {
+  display: none;
+}
+
 .experience-list li, .education-list li {
   display: flex;
   gap: var(--space-4);
