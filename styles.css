@@ -551,7 +551,7 @@ article ul li {
 }
 
 .contact-form button {
-  background: var(--color-foreground);   /* your green */
+  background: var(--color-foreground);
   color: var(--color-background);
   padding: 0.75rem 1.5rem;
   border: none;
@@ -566,9 +566,13 @@ article ul li {
   background: var(--color-primary);
 }
 
-
+footer p {
+  text-align: right;
+  color: var(--color-muted-foreground);
+  font-size: var(--fs-sm);
+  padding: 2rem 1rem;
+}
 /* ===== Modal base ===== */
-/* Modal container fades and disables interaction when hidden */
 #modal {
   position: fixed;
   inset: 0;
@@ -637,7 +641,13 @@ article ul li {
   background: #000;
 }
 
-.modal-article iframe { width: 100%; height: 100%; display: block; }
+.modal-article figure { width: 100%; height: 100%; display: block; }
+.modal-article figcaption {
+  font-size: var(--fs-sm);
+  color: var(--color-muted-foreground);
+  text-align: center;
+  margin-top: var(--space-1);
+}
 
 .modal-header h3 { font-size: 1.25rem; font-weight: var(--fw-bold); margin: 0; }
 
